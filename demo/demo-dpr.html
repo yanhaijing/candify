@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>devicePixelRatio</title>
+  </head>
+  <body>
+    <canvas id="canvas1" width="300" height="200"></canvas>
+    <canvas id="canvas2" width="300" height="200"></canvas>
+    <script>
+      let canvas1 = document.querySelector('#canvas1');
+      let ctx1 = canvas1.getContext('2d');
+
+      // 首先，获取设备的像素比
+      let dpr = window.devicePixelRatio || 1;
+
+      // 调整canvas1的大小，乘以设备像素比
+      canvas1.style.width = canvas1.offsetWidth + 'px';
+      canvas1.style.height = canvas1.offsetHeight + 'px';
+      canvas1.width = canvas1.offsetWidth * dpr;
+      canvas1.height = canvas1.offsetHeight * dpr;
+
+      // 缩放context，使得后续的绘图操作都放大相应的倍数
+      ctx1.scale(dpr, dpr);
+
+      // 之后进行的绘图操作，就会以高分辨率的方式进行
+      ctx1.strokeRect(0, 0, 100, 100);
+      ctx1.fillText('Hello World!', 0, 120);
+
+      let canvas2 = document.querySelector('#canvas2');
+      let ctx2 = canvas2.getContext('2d');
+      ctx2.strokeRect(0, 0, 100, 100);
+      ctx2.fillText('Hello World!', 0, 120);
+    </script>
+  </body>
+</html>

@@ -97,7 +97,8 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.23.2",
-    "@jsmini/event": "^0.8.0"
+    "@jsmini/event": "^0.8.0",
+    "@jsmini/guid": "^0.10.0"
   },
   "config": {
     "commitizen": {
